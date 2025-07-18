@@ -60,9 +60,9 @@ jobs:
               |__|  *
         EOC' | sudo tee /usr/share/cowsay/cows/lion.cow
 
-    - name: Run cowsay with lion
+    - name: Run cowsay
       run: |
-        cowsay -f lion "Just be aware, I am still the jungle king" >> lion.txt
+        cowsay "Just be aware, I am still the jungle king" >> lion.txt
 
     - name: Display content of lion.txt
       run: cat lion.txt
