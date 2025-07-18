@@ -15,9 +15,15 @@ jobs:
             ls -ltra
             cat README.md
 
-        - name: install cowsay
-          run: sudo apt-get install -y cowsay
+        - name: Install cowsay
+          run: sudo apt-get update && sudo apt-get install -y cowsay
 
-        - name: Generate ASCII Artwork
-          run: COWSAY -f lion "Just be aware, I am still the jungle king" >> lion.txt
+        - name: Add cowsay to PATH
+          run: echo "/usr/games" >> $GITHUB_PATH
 
+        - name: Run cowsay
+          run: |
+             cowsay -f lion "Just be aware, I am still the jungle king" >> lion.txt
+
+        - name: Display content of lion.txt
+          run: cat lion.txt
