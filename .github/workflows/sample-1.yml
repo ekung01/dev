@@ -31,28 +31,68 @@
 #             ls -ltra
 #             cat README.md
 
-name: My cowsay workflow executed with script
+
+## workflow with shell script.
+# name: My cowsay workflow executed with script
+
+# on: push
+
+# jobs:
+#   starter_job:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v4
+
+#       - name: List repository files
+#         run: ls -ltra
+
+#       - name: Verify ascii-script.sh exists
+#         run: |
+#           if [ ! -f ./ascii-script.sh ]; then
+#             echo "ascii-script.sh not found!" >&2
+#             exit 1
+#           fi
+
+#       - name: Make ascii-script.sh executable and execute
+#         run: |
+#           chmod +x ascii-script.sh
+#           ./ascii-script.sh
+
+
+### Multiple jobs in a workflow
+
+name: cowsay workflow multi-jobs
 
 on: push
 
 jobs:
-  starter_job:
+  build_job-1:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Install Cowsay Program
+        run: sudo apt-get install cowsay -y
 
-      - name: List repository files
-        run: ls -ltra
+      - name: Execute Cowsay CMD
+        run: cowsay -f dragon "Just be aware, the lion is still the jungle king" >> lion.txt
 
-      - name: Verify ascii-script.sh exists
-        run: |
-          if [ ! -f ./ascii-script.sh ]; then
-            echo "ascii-script.sh not found!" >&2
-            exit 1
-          fi
+      - name: Sleep for 30 seconds
+        run: sleep 30
 
-      - name: Make ascii-script.sh executable and execute
-        run: |
-          chmod +x ascii-script.sh
-          ./ascii-script.sh
+  test_job-2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sleep for 10 second
+        run: sleep 10
+
+      - name: Test file exists
+        run: grep -i "lion" lion.txt
+
+  deploy_job-3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: read File
+        run: cat lion.txt
+
+      - name: deploy
+        run: echo Deploying files
