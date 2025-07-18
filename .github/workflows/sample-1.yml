@@ -1,72 +1,29 @@
-name: My first workflow
+name: My cowsay workflow
 
 on: push
 
-# jobs:
-#     starter_job:
-#         runs-on: ubuntu-latest
-#         steps:
-#         - name: checkout Repo
-#           uses: actions/checkout@v4        
-          
-#         - name: list and multi-command with cowsaymsge
-#           run: |
-#             echo "Actions usage with multiple commands"
-#             ls -ltra
-#             cat README.md
-
-#         - name: Install cowsay
-#           run: sudo apt-get update && sudo apt-get install -y cowsay
-
-#         - name: Add cowsay to PATH
-#           run: echo "/usr/games" >> $GITHUB_PATH
-
-#         - name: Run cowsay
-#           run: |
-#              cowsay -f lion "Just be aware, I am still the jungle king" >> lion.txt
-
-#         - name: Display content of lion.txt
-#           run: cat lion.txt
-
-
 jobs:
-  starter_job:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout Repo
-      uses: actions/checkout@v4        
-      
-    - name: List and multi-command
-      run: |
-        echo "Actions usage with multiple commands"
-        ls -ltra
-        cat README.md
+    starter_job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: checkout Repo
+          uses: actions/checkout@v4        
 
-    - name: Install cowsay
-      run: sudo apt-get update && sudo apt-get install -y cowsay
+        - name: list and multi-command with cowsaymsge
+          run: |
+            echo "Actions usage with multiple commands"
+            ls -ltra
+            cat README.md
 
-    - name: Add cowsay to PATH
-      run: echo "/usr/games" >> $GITHUB_PATH
+        - name: Install cowsay
+          run: sudo apt-get update && sudo apt-get install -y cowsay
 
-    - name: Create lion cowfile
-      run: |
-        sudo mkdir -p /usr/share/cowsay/cows
-        echo '$the_cow = <<"EOC";
-           \    ,   , 
-            \  /\\/
-             \|   /
-              |__| *  
-              |  |
-              |__|  *
-        EOC' | sudo tee /usr/share/cowsay/cows/lion.cow
+        - name: Add cowsay to PATH
+          run: echo "/usr/games" >> $GITHUB_PATH
 
-    - name: Run cowsay
-      run: |
-        cowsay "Just be aware, I am still the jungle king" >> lion.txt
+        - name: Run cowsay
+          run: |
+            cowsay -f dragon "Just be aware, I am still the jungle king" >> lion.txt
 
-    - name: Display content of lion.txt
-      run: cat lion.txt
-
-    # Optional: List available cowfiles
-    - name: List available cowfiles
-      run: cowsay -l
+        - name: Display content of lion.txt
+          run: cat lion.txt
