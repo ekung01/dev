@@ -32,21 +32,29 @@
 #             cat README.md
 
 
-name: My cowsay workflow executed with script.
+name: My cowsay workflow executed with script
 
 on: push
 
 jobs:
-    starter_job:
-        runs-on: ubuntu-latest
-        steps:
-        - name: checkout Repo
-          uses: actions/checkout@v4
+  starter_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-        - name: List Repo files
-          run: ls -ltra
+      - name: List repository files
+        run: ls -ltra
 
-        - name: Executeing shell Script
-          run: |
-            chmod +x ./ascii-script.sh
-            ./ascii-script.sh
+      - name: Verify ascii-script.sh exists
+        run: |
+          if [ ! -f ./ascii-script.sh ]; then
+            echo "ascii-script.sh not found!" >&2
+            exit 1
+          fi
+
+      - name: Make ascii-script.sh executable
+        run: chmod +x ./ascii-script.sh
+
+      - name: Execute ascii-script.sh
+        run: ./ascii-script.sh
