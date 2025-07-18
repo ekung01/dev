@@ -67,7 +67,7 @@ name: cowsay workflow multi-jobs
 on: push
 
 jobs:
-  build_job-1:
+  build_job_1:
     runs-on: ubuntu-latest
     steps:
       - name: Install Cowsay Program
@@ -76,27 +76,35 @@ jobs:
       - name: Execute Cowsay CMD
         run: cowsay -f dragon "Just be aware, the lion is still the jungle king" >> lion.txt
 
-      - name: Sleep for 30 seconds
-        run: sleep 30
+      - name: Upload lion.txt artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: lion
+          path: lion.txt
 
-  test_job-2:
-    needs: build_job-1
+  test_job_2:
+    needs: build_job_1
     runs-on: ubuntu-latest
     steps:
-      - name: Sleep for 10 second
-        run: sleep 10
+      - name: Download lion.txt artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: lion
 
-      - name: Test file exists
+      - name: Test file contains 'lion'
         run: grep -i "lion" lion.txt
 
-  deploy_job-3:
-    needs: test_job-2
+  deploy_job_3:
+    needs: test_job_2
     runs-on: ubuntu-latest
     steps:
-      - name: read File
+      - name: Download lion.txt artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: lion
+
+      - name: Output lion.txt contents
         run: cat lion.txt
 
-      - name: deploy
+      - name: Deploy step
         run: echo Deploying files
-
-        
