@@ -1,4 +1,38 @@
-name: My cowsay workflow
+# name: My cowsay workflow
+
+# on: push
+
+# jobs:
+#     starter_job:
+#         runs-on: ubuntu-latest
+#         steps:
+#         - name: checkout Repo
+#           uses: actions/checkout@v4        
+
+#         - name: Install cowsay
+#           run: sudo apt-get update && sudo apt-get install -y cowsay
+
+#         - name: Add cowsay to PATH
+#           run: echo "/usr/games" >> $GITHUB_PATH
+
+#         - name: Run cowsay
+#           run: |
+#             cowsay -f dragon "Just be aware, the lion is still the jungle king" >> lion.txt
+
+#         - name: Test file Exist
+#           run: grep -i "lion" lion.txt
+
+#         - name: Display content of lion.txt
+#           run: cat lion.txt
+
+#         - name: list and multi-command with cowsaymsge
+#           run: |
+#             echo "Actions usage with multiple commands"
+#             ls -ltra
+#             cat README.md
+
+
+name: My cowsay workflow executed with script.
 
 on: push
 
@@ -7,26 +41,12 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - name: checkout Repo
-          uses: actions/checkout@v4        
+          uses: actions/checkout@v4
 
-        - name: Install cowsay
-          run: sudo apt-get update && sudo apt-get install -y cowsay
+        - name: List Repo files
+          run: ls -ltra
 
-        - name: Add cowsay to PATH
-          run: echo "/usr/games" >> $GITHUB_PATH
-
-        - name: Run cowsay
+        - name: Executeing shell Script
           run: |
-            cowsay -f dragon "Just be aware, the lion is still the jungle king" >> lion.txt
-
-        - name: Test file Exist
-          run: grep -i "lion" lion.txt
-
-        - name: Display content of lion.txt
-          run: cat lion.txt
-
-        - name: list and multi-command with cowsaymsge
-          run: |
-            echo "Actions usage with multiple commands"
-            ls -ltra
-            cat README.md
+            chmod +x ./ascii-script.sh
+            ./ascii-script.sh
