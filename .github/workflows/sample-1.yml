@@ -31,7 +31,6 @@
 #             ls -ltra
 #             cat README.md
 
-
 name: My cowsay workflow executed with script
 
 on: push
