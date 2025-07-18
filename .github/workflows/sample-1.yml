@@ -7,7 +7,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - name: checkout Repo
-          uses: actions/checkout@v        
+          uses: actions/checkout@v4        
           
         - name: list and multi-command with coymsge
           run: |
