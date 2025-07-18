@@ -12,7 +12,7 @@ jobs:
         - name: list and multi-command with coymsge
           run: |
             echo "Actions usage with multiple commands"
-            ls ltra
+            ls -ltra
             cat README.md
 
         - name: Generate ASCII Artwork
