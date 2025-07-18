@@ -53,8 +53,7 @@ jobs:
             exit 1
           fi
 
-      - name: Make ascii-script.sh executable
-        run: chmod +x ascii-script.sh
-
-      - name: Execute ascii-script.sh
-        run: ./ascii-script.sh
+      - name: Make ascii-script.sh executable and execute
+        run: |
+          chmod +x ascii-script.sh
+          ./ascii-script.sh
