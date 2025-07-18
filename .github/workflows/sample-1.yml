@@ -7,13 +7,19 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - name: checkout Repo
-          uses: actions/checkout@v4
+          uses: actions/checkout@v        
+          
+        - name: list and multi-command with coymsge
+          run: |
+            echo "Actions usage with multiple commands"
+            ls ltra
+            cat README.md
 
-        - name: welcome message
-          run: echo " This is our first github actions project"
+        - name: Generate ASCII Artwork
+          run: COWSAY -f lion "Just be aware, I am still the jungle king" >> lion.txt
 
-        - name: list files
-          run: ls
+        # - name: list files
+        #   run: ls 
 
-        - name: read all files
-          run: cat README.md
+        # - name: read all files
+        #   run: cat README.md
