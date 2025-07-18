@@ -77,7 +77,7 @@ jobs:
         run: cowsay -f dragon "Just be aware, the lion is still the jungle king" >> lion.txt
 
       - name: Upload lion.txt artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4 # actions to upload artifact  between job if running different runners
         with:
           name: lion
           path: lion.txt
@@ -87,7 +87,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download lion.txt artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v4 # uption to download artifact between job if running different runners
         with:
           name: lion
 
@@ -99,7 +99,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download lion.txt artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v4 # uption to download artifact between job if running different runners
         with:
           name: lion
 
