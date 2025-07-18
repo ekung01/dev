@@ -18,8 +18,3 @@ jobs:
         - name: Generate ASCII Artwork
           run: COWSAY -f lion "Just be aware, I am still the jungle king" >> lion.txt
 
-        # - name: list files
-        #   run: ls 
-
-        # - name: read all files
-        #   run: cat README.md
