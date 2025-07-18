@@ -54,7 +54,7 @@ jobs:
           fi
 
       - name: Make ascii-script.sh executable
-        run: chmod +x ./ascii-script.sh
+        run: chmod +x ascii-script.sh
 
       - name: Execute ascii-script.sh
         run: ./ascii-script.sh
