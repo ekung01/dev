@@ -20,7 +20,7 @@ jobs:
             cowsay -f dragon "Just be aware, I am still the jungle king" >> lion.txt
 
         - name: Test file Exist
-          run: grep -i "lion" lion.text
+          run: grep -i "lion" lion.txt
 
         - name: Display content of lion.txt
           run: cat lion.txt
