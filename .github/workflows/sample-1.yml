@@ -9,11 +9,14 @@ jobs:
         - name: checkout Repo
           uses: actions/checkout@v4        
           
-        - name: list and multi-command with coymsge
+        - name: list and multi-command with cowsaymsge
           run: |
             echo "Actions usage with multiple commands"
             ls -ltra
             cat README.md
+
+        - name: install cowsay
+          run: sudo apt-get install -y cowsay
 
         - name: Generate ASCII Artwork
           run: COWSAY -f lion "Just be aware, I am still the jungle king" >> lion.txt
