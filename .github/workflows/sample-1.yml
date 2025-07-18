@@ -17,7 +17,7 @@ jobs:
 
         - name: Run cowsay
           run: |
-            cowsay -f dragon "Just be aware, I am still the jungle king" >> lion.txt
+            cowsay -f dragon "Just be aware, the lion is still the jungle king" >> lion.txt
 
         - name: Test file Exist
           run: grep -i "lion" lion.txt
